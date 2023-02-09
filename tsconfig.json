@@ -3,7 +3,8 @@
       "module": "CommonJS",
       "moduleResolution": "node",
       "types":[
-        "node", 
+        "node",
+        "superagent",
         "jest"
       ],
       "esModuleInterop": true,

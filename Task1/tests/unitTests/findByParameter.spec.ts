@@ -1,4 +1,4 @@
-import { MainClass } from "../Shop/mainClass"
+import { MainClass } from "../../Shop/mainClass"
 
 describe("Find by parameter tests.", () => {
 

@@ -1,7 +1,7 @@
-import { MainClass } from "../Shop/mainClass"
-import { Data } from "../Shop/data"
-import { basket } from "../Shop/mainClass";
-import { clearCart } from "../helpers/clearCartHelper";
+import { MainClass } from "../../Shop/mainClass"
+import { Data } from "../../Shop/data"
+import { basket } from "../../Shop/mainClass";
+import { clearCart } from "../../helpers/clearCartHelper";
 
 describe("Remove from cart tests.", () => {
     afterEach(() => {

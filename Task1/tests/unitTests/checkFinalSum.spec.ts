@@ -1,6 +1,6 @@
-import { MainClass } from "../Shop/mainClass"
-import { Data } from "../Shop/data"
-import { clearCart } from "../helpers/clearCartHelper";
+import { MainClass } from "../../Shop/mainClass"
+import { Data } from "../../Shop/data"
+import { clearCart } from "../../helpers/clearCartHelper";
 
 describe("Check final sum value tests.", () => {
     afterEach(() => {
