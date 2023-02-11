@@ -5,7 +5,11 @@
       "types":[
         "node",
         "superagent",
-        "jest"
+        "jest",
+        "@wdio/globals/types",
+        "expect-webdriverio",
+        "@wdio/cucumber-framework",
+        "@wdio/browser-runner"
       ],
       "esModuleInterop": true,
       "target": "ES6",
