@@ -1,31 +1,23 @@
-import superagent from "superagent"
 import { PetInfo } from "./testData/testData";
-import { memory } from "./testData/testData"
+import { RequestWrapper } from "./requestWrapper/requestWrapper";
 
 describe("Check PUT requests.", () => {
     beforeEach(async () => {
         const testData = new PetInfo();
+        const petItem: string = JSON.stringify(testData.addPet);
 
-        await superagent
-        .post("https://petstore.swagger.io/v2/pet")
-        .send(testData.addPet)
-        .set('Content-Type','application/json');
+        const addNewPet = new RequestWrapper("pet", "post", petItem);
+        await addNewPet.getResponse()
     });
 
     afterEach(async () => {
-        await superagent
-        .delete("https://petstore.swagger.io/v2/pet/9")
-        .catch(err => {console.log("Pet 9 has removed.")});
+        const removeOrder = new RequestWrapper("store/order/9", "delete");
+        await removeOrder.getResponse().catch(err => {console.log(`Order Item 9 has already removed in tests`)})
     });
 
     it("1. Update name for pet item.", async () => {
-        const result = await superagent
-        .put("https://petstore.swagger.io/v2/pet")
-        .send({
-            "id": 9,
-            "name": "updated name"
-          })
-        .set('Content-Type','application/json');
+        const newPutRequest = new RequestWrapper("pet", "put", `{"id": 9,"name": "updated name"}`);
+        const result = await newPutRequest.getResponse()
 
         expect(result.status).toBe(200);
         const resObj = JSON.parse(result.text);
@@ -34,15 +26,8 @@ describe("Check PUT requests.", () => {
     });
 
     it("2. Update category name for pet item.", async () => {
-        const result = await superagent
-        .put("https://petstore.swagger.io/v2/pet")
-        .send({
-            "id": 9,
-            "category": {
-              "name": "category upd"
-            }
-          })
-        .set('Content-Type','application/json');
+        const newPutRequest = new RequestWrapper("pet", "put", `{"id": 9, "category": {"name": "category upd"}}`);
+        const result = await newPutRequest.getResponse()
 
         expect(result.status).toBe(200);
         const resObj = JSON.parse(result.text);
@@ -51,13 +36,8 @@ describe("Check PUT requests.", () => {
     });
 
     it("3. Update status for pet item.", async () => {
-        const result = await superagent
-        .put("https://petstore.swagger.io/v2/pet")
-        .send({
-            "id": 9,
-            "status": "sold"
-          })
-        .set('Content-Type','application/json');
+        const newPutRequest = new RequestWrapper("pet", "put", `{"id": 9,"status": "sold"}`);
+        const result = await newPutRequest.getResponse()
 
         expect(result.status).toBe(200);
         const resObj = JSON.parse(result.text);
@@ -66,15 +46,8 @@ describe("Check PUT requests.", () => {
     });
 
     it("4. Update category id for pet item.", async () => {
-        const result = await superagent
-        .put("https://petstore.swagger.io/v2/pet")
-        .send({
-            "id": 9,
-            "category": {
-              "id": 999 
-            }
-          })
-        .set('Content-Type','application/json');
+        const newPutRequest = new RequestWrapper("pet", "put", `{"id": 9,"category": {"id": 999}}`);
+        const result = await newPutRequest.getResponse()
 
         expect(result.status).toBe(200);
         const resObj = JSON.parse(result.text);
@@ -84,13 +57,8 @@ describe("Check PUT requests.", () => {
 
     it("5. Update user.", async () => {
         const testData = new PetInfo();
-        const result = await superagent
-        .put("https://petstore.swagger.io/v2/user/user1")
-        .send({
-            "id": testData.curDate,
-            "lastName": "update"
-          })
-        .set('Content-Type','application/json');
+        const newPutRequest = new RequestWrapper("user/user1", "put", `{"id": ${testData.curDate},"lastName": "update"}`);
+        const result = await newPutRequest.getResponse()
 
         expect(result.status).toBe(200);
         const resObj = JSON.parse(result.text);

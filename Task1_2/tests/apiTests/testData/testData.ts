@@ -39,7 +39,3 @@ export class PetInfo {
         "userStatus": 1
       }
 }
-
-export const memory = {
-    time: 0,
-}
