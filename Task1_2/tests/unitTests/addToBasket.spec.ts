@@ -32,7 +32,6 @@ describe("Add to Cart tests", () => {
     test("4. Add unexistent item.", () => {
         const cart = new MainClass;
         cart.addToBasket(Data[999]);
-        console.log("cart = "+ JSON.stringify(basket))
         expect(basket.length).toBe(0);
     })
 });

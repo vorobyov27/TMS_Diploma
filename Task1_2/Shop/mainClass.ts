@@ -19,7 +19,6 @@ export class MainClass {
             basket.forEach(element => {
                 totalAmount += element.price
             }) 
-            console.log("totalAmount is: " + totalAmount)
             return totalAmount;
         } else {
             return 0
@@ -44,7 +43,6 @@ export class MainClass {
             const removeIndex: number = basket.findIndex(element => {
                 return element.name === itemName
             })
-            console.log("removeIndex = "+removeIndex)
             if (removeIndex > -1) {
                 basket.splice(removeIndex, 1)
             } else {
@@ -60,10 +58,8 @@ export class MainClass {
         if (basket.length > 0) {
             const sum = this.totalSum();
             const discount = this.checkDiscount(sum);
-            console.log("discount = "+discount)
             finalSum = (sum * (100 - discount))/100;
         }
-        console.log("finalSum is: " + finalSum)   
         return finalSum;
     }
 
@@ -90,7 +86,6 @@ export class MainClass {
                 console.log("Cannot find items with search parameters")
             }
         }
-        console.log("result is: " + JSON.stringify(result)) 
         return result;
     }
 }
