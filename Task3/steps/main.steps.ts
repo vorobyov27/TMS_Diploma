@@ -32,31 +32,26 @@ Then(/^Betslip is not displayed$/, async () => {
 
 When(/^I click See all football link$/, async () => {
     const cururrentPage = PageFactory.getPage(Page.Live)
-    await cururrentPage.seeAllLinkFootball.waitForClickableElement()
     await cururrentPage.seeAllLinkFootball.click()
 })
 
 When(/^I click on event item to open Event page$/, async () => {
     const cururrentPage = PageFactory.getPage(Page.Live)
-    await cururrentPage.eventItem.waitForClickableElement();
     await cururrentPage.eventItem.click();
 })
 
 When(/^I click favourites icon$/, async () => {
     const cururrentPage = PageFactory.getPage(Page.Live)
-    await cururrentPage.favStarIcon.waitForClickableElement()
     await cururrentPage.favStarIcon.click();
 })
 
 When(/^I click favourites sports icon$/, async () => {
     const component = ComponentFactory.getComponent(Components.SportsItemsBar)
-    await component.favouritesOff.waitForClickableElement()
     await component.favouritesOff.click()
 })
 
 When(/^I click Football sports icon$/, async () => {
     const component = ComponentFactory.getComponent(Components.SportsItemsBar)
-    await component.footballOff.waitForClickableElement()
     await component.footballOff.click()
 })
 
@@ -82,7 +77,6 @@ Then(/^Collapsed category has been appeared$/, async () => {
 
 When(/^I add selection to betslip$/, async () => {
     const cururrentPage = PageFactory.getPage(Page.Live)
-    await cururrentPage.eventSelection.waitForClickableElement()
     await cururrentPage.eventSelection.click();
 })
 
@@ -94,7 +88,6 @@ Then(/^Betslip selection has been appeared$/, async () => {
 
 When(/^I enter valid bet to betslip$/, async () => {
     const component = ComponentFactory.getComponent(Components.Betslip)
-    await component.keyboard9button.waitForClickableElement()
     await component.keyboard9button.click()
 })
 
@@ -105,7 +98,6 @@ Then(/^Active Place bet button appears$/, async () => {
 
 When(/^I remove selection from Betslip$/, async () => {
     const component = ComponentFactory.getComponent(Components.Betslip)
-    await component.removeButton.waitForClickableElement()
     await component.removeButton.click()
 })
 
@@ -121,26 +113,21 @@ Then(/^Prematch tab active has been appeared$/, async () => {
 
 When(/^I switch to Prematch tab$/, async () => {
     const component = ComponentFactory.getComponent(Components.Header)
-    await component.sportTabOff.waitForClickableElement()
     await component.sportTabOff.click()
 })
 
 When(/^I click on Join now link$/, async () => {
     const component = ComponentFactory.getComponent(Components.Header)
-    await component.joinPageLink.waitForClickableElement()
     await component.joinPageLink.click()
 })
 
 When(/^I close cookie popup$/, async () => {
     const cururrentPage = PageFactory.getPage(Page.Live)
-    await cururrentPage.cookieButton.waitForClickableElement()
     await cururrentPage.cookieButton.click()
     await cururrentPage.cookieButton.waitForDisappear()
 })
 
 When(/^I click on Login link$/, async () => {
     const component = ComponentFactory.getComponent(Components.Header)
-    await component.loginLink.waitForClickableElement()
     await component.loginLink.click()
 })
-

@@ -1,4 +1,5 @@
 import { Element } from "webdriverio";
+import { Config } from "../helpers/configs";
 
 export abstract class DefaultElement {
 
@@ -14,18 +15,19 @@ export abstract class DefaultElement {
     }
 
     public async waitForDisplay() {
-        return (await this.getElement()).waitForDisplayed({timeout: 5000})
+        return (await this.getElement()).waitForDisplayed({timeout: Config.waitTimeout})
     }
 
     public async waitForDisappear() {
-        return (await this.getElement()).waitForDisplayed({timeout: 5000, reverse :true})
+        return (await this.getElement()).waitForDisplayed({timeout: Config.waitTimeout, reverse :true})
     }
 
     public async waitForClickableElement() {
-        return (await this.getElement()).waitForClickable({timeout: 5000})
+        return (await this.getElement()).waitForClickable({timeout: Config.waitTimeout})
     }
 
     public async click() {
-        (await this.getElement()).click()
+        (await this.getElement()).waitForClickable({timeout: Config.waitTimeout})
+        return (await this.getElement()).click()
     }
 }

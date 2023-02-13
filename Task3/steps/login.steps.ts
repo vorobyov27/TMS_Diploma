@@ -24,6 +24,5 @@ Then(/^Join now popup link has been appeared$/, async () => {
 
 When(/^I click Join now popup link$/, async () => {
     const component = ComponentFactory.getComponent(Components.Login)
-    await component.joinNowLink.waitForClickableElement()
     await component.joinNowLink.click()
 })
